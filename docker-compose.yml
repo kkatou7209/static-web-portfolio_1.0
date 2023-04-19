@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:1.23.4
+    container_name: static-web-1_nginx
+    working_dir: /etc/nginx/
+    volumes:
+      - ./nginx/my.conf:/etc/nginx/conf.d/my.conf
+    tty: true
+    ports:
+      - 80:80
+
+
+  react:
+    image: node:19.9.0
+    container_name: static-web-1_react
+    working_dir: /var/app
+    volumes:
+      - ./react/:/var/app
+    tty: true
+    ports:
+      - 3000:3000
+
+
+
+
